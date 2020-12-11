@@ -4,6 +4,8 @@ const router = express.Router();
 const axios = require("axios");
 const sleep = require("util").promisify(setTimeout);
 const STATUS_SUCCEEDED = "succeeded";
+const key = process.env.KEY1;
+const endpoint = process.env.ENDPOINT;
 
 // @router  POST api/ocr
 // @desc    Get Text
@@ -11,9 +13,6 @@ const STATUS_SUCCEEDED = "succeeded";
 router.post("/", async (req, res) => {
   const base64 = req.body.base64;
   const data = Buffer.from(base64, "base64");
-
-  const key = process.env.KEY1;
-  const endpoint = process.env.ENDPOINT;
 
   axios({
     method: "post",
