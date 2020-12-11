@@ -7,10 +7,12 @@ app.use(express.json({ extended: false }));
 app.get("/", (req, res) => res.send("API running"));
 
 // Define Routes
-app.use("/api/orc", require("./routes/api/ocr"));
+app.use("/api/ocr", require("./routes/api/ocr"));
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server started on  http://localhost:${PORT}/`)
+);
 
 module.exports = app; // only for testing
