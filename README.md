@@ -13,10 +13,16 @@ An API which accepts images and PDF files and extracts the text out of it.
    npm install
    ```
 3. Run development server
+
    ```bash
    npm run server
    ```
-4. Use the API in Postman or any other API testing tool
+
+4. Run deployment server
+   ```bash
+   npm run start
+   ```
+5. Use the API in Postman or any other API testing tool
 
 ### Please refere APIDoc.md for API documentation
 

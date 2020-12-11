@@ -9,25 +9,19 @@ const STATUS_SUCCEEDED = "succeeded";
 // @desc    Get Text
 // @access  Public
 router.post("/", async (req, res) => {
+  const base64 = req.body.base64;
+  const data = Buffer.from(base64, "base64");
+
   const key = process.env.KEY1;
   const endpoint = process.env.ENDPOINT;
-  // const imgURL =
-  //   "https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/126259992/original/d377377b6758a398b9ab6cbe1d27fd536acfcca8/convert-any-handwritten-english-or-hindi-text-to-word-or-excel.jpg";
-  // const imgURL =
-  //   "https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg";
-  // const imgURL =
-  //   "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/MultiLingual.png";
-  const imgURL =
-    "https://raw.githubusercontent.com/Azure-Samples/cognitive-services-sample-data-files/master/ComputerVision/Images/MultiPageHandwrittenForm.pdf";
 
   axios({
     method: "post",
     url: endpoint,
-    data: {
-      url: imgURL,
-    },
+    data,
     headers: {
       "Ocp-Apim-Subscription-Key": key,
+      "Content-Type": "application/octet-stream",
     },
   }).then(async (post_response) => {
     let operation_location = post_response.headers["operation-location"];

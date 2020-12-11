@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 // Body parser middleware
-app.use(express.json({ extended: false }));
+app.use(express.json({ extended: false, limit: "50mb" }));
 
 app.get("/", (req, res) => res.send("API running"));
 
